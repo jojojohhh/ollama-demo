@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ollama-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vectordb
+    username: postgres
+    password: 1234
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: hf.co/MLP-KTLim/llama-3-Korean-Bllossom-8B-gguf-Q4_K_M:Q4_K_M
+          temperature: 0.3
+#    vectorstore:
+#      pgvector:
+#        index-type: HNSW
+#        distance-type: COSINE_DISTANCE
+#        dimensions: 1536
+#        max-document-batch-size: 10000
+
+logging:
+  level:
+    com.example.demo.*: INFO
