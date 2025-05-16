@@ -12,13 +12,20 @@ spring:
         options:
           model: hf.co/MLP-KTLim/llama-3-Korean-Bllossom-8B-gguf-Q4_K_M:Q4_K_M
           temperature: 0.3
-#    vectorstore:
-#      pgvector:
-#        index-type: HNSW
-#        distance-type: COSINE_DISTANCE
-#        dimensions: 1536
-#        max-document-batch-size: 10000
+      embedding:
+        options:
+          model: hf.co/nomic-ai/nomic-embed-text-v1.5-GGUF:Q4_K_M
+      init:
+        pull-model-strategy: always
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 768
+        max-document-batch-size: 10000
+        initialize-schema: true
 
 logging:
   level:
-    com.example.demo.*: INFO
+    com.example.demo.*: debug
+    org.springframework.*: info
